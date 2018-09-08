@@ -11,7 +11,8 @@ void setup() {
   
   // vagrantGrid(50, padding, padding, width - padding, height - padding);
   // packerGrid(50, padding, padding, width - padding, height - padding);
-  terraformGrid(50, padding, padding, width - padding, height - padding);
+  //terraformGrid(50, padding, padding, width - padding, height - padding);
+  vaultGrid(50, padding, padding, width - padding, height - padding);
 }
 
 void constrainedLine(float x, float y, float ang, float xLimit, float yLimit) {
@@ -33,6 +34,15 @@ void repeatVertical(float size, float x1, float y1, float x2, float y2) {
   while (x < x2) {
     line(x, y1, x, y2);
     x += tHeight;
+  }
+}
+
+void repeatHorizontal(float size, float x1, float y1, float x2, float y2) {
+  float tHeight = size * sqrt(3) / 2;
+  float y = y1 + tHeight;
+  while (y < y2) {
+    line(x1, y, x2, y);
+    y += tHeight;
   }
 }
 
@@ -76,6 +86,47 @@ void repeatUp30(float size, float x1, float y1, float x2, float y2) {
   }
 }
 
+void repeatDown60(float size, float x1, float y1, float x2, float y2) {
+  float tHeight = size * sqrt(3) / 2;
+  float x = x1;
+  float y = y1;
+  
+  // 30deg lines from top-left to bottom-left
+  while (y < y2) {
+    constrainedLine(x, y, radians(60), x2, y2);
+    y += tHeight * 2;
+  }
+  
+  // 30 deg lines from top-left to top-right;
+  y = y1;
+  x += size;
+  while(x < x2) {
+    constrainedLine(x, y, radians(60), x2, y2);
+    x += size;
+  }
+}
+
+void repeatUp60(float size, float x1, float y1, float x2, float y2) {
+  float tHeight = size * sqrt(3) / 2;
+  float y = y1;
+  float x = x1;
+  
+  // -30deg lines from top-left to bottom-left
+  while(y < y2) {
+    constrainedLine(x, y, radians(-60), x2, y1);
+    y += tHeight * 2;
+  }
+  
+  // -30deg lines from bottom-left to bottom-right
+  x += size * ((y - y2) / (tHeight * 2)); // start x proportionally based on the remainder between y and the max y)
+  y = y2;
+  while(x < x2) {
+    constrainedLine(x, y, radians(-60), x2, y1);
+    x += size;
+  }
+}
+
+
 void vagrantGrid(float size, float x1, float y1, float x2, float y2) {  
   repeatVertical(size, x1, y1, x2, y2);
   repeatDown30(size, x1, y1, x2, y2);
@@ -92,7 +143,10 @@ void terraformGrid(float size, float x1, float y1, float x2, float y2) {
   repeatUp30(size, x1, y1, x2, y2);
 }
 
-void vaultGrid() {
+void vaultGrid(float size, float x1, float y1, float x2, float y2) {
+  repeatHorizontal(size, x1, y1, x2, y2);
+  repeatDown60(size, x1, y1, x2, y2);
+  repeatUp60(size, x1, y1, x2, y2);
 }
 
 void consulGrid() {
