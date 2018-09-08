@@ -152,5 +152,7 @@ void vaultGrid(float size, float x1, float y1, float x2, float y2) {
 void consulGrid() {
 }
 
-void nomadGrid() {
+void nomadGrid(float size, float x1, float y1, float x2, float y2) {
+  repeatDown30(size, x1, y1, x2, y2);
+  repeatUp30(size, x1, y1, x2, y2);
 }
