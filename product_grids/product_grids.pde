@@ -9,7 +9,7 @@ void setup() {
   
   int padding = 50;
   
-  vagrantGrid(15, padding, padding, width - padding, height - padding);
+  vagrantGrid(50, padding, padding, width - padding, height - padding);
 }
 
 void constrainedLine(float x, float y, float ang, float xLimit, float yLimit) {
@@ -24,20 +24,22 @@ void constrainedLine(float x, float y, float ang, float xLimit, float yLimit) {
   }
 }
 
-void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
+void repeatVertical(float size, float x1, float y1, float x2, float y2) {
+  // Vertical lines from left to right
   float tHeight = size * sqrt(3) / 2;
   float x = x1 + tHeight;
-  float y = y1;
-  
-  // Vertical lines from left to right
   while (x < x2) {
-    line(x, y, x, y2);
+    line(x, y1, x, y2);
     x += tHeight;
   }
+}
+
+void repeatDown30(float size, float x1, float y1, float x2, float y2) {
+  float tHeight = size * sqrt(3) / 2;
+  float x = x1;
+  float y = y1;
   
   // 30deg lines from top-left to bottom-left
-  x = x1;
-  y = y1;
   while (y < y2) {
     constrainedLine(x, y, radians(30), x2, y2);
     y += size;
@@ -50,10 +52,14 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
     constrainedLine(x, y, radians(30), x2, y2);
     x += tHeight * 2;
   }
+}
+
+void repeatUp30(float size, float x1, float y1, float x2, float y2) {
+  float tHeight = size * sqrt(3) / 2;
+  float y = y1;
+  float x = x1;
   
   // -30deg lines from top-left to bottom-left
-  y = y1;
-  x = x1;
   while(y < y2) {
     constrainedLine(x, y, radians(-30), x2, y1);
     y += size;
@@ -66,6 +72,12 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
     constrainedLine(x, y, radians(-30), x2, y1);
     x += tHeight * 2;
   }
+}
+
+void vagrantGrid(float size, float x1, float y1, float x2, float y2) {  
+  repeatVertical(size, x1, y1, x2, y2);
+  repeatDown30(size, x1, y1, x2, y2);
+  repeatUp30(size, x1, y1, x2, y2);
 }
 
 void packerGrid() {
