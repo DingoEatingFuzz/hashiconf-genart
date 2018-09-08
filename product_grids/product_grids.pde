@@ -15,13 +15,15 @@ void setup() {
 void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
   float tHeight = size * sqrt(3) / 2;
   float x = x1 + tHeight;
+  float y = y1;
+  
   while (x < x2) {
-    line(x, y1, x, y2);
+    line(x, y, x, y2);
     x += tHeight;
   }
   
   x = x1;
-  float y = y1;
+  y = y1;
   while (y < y2) {
     float xOffset = ((y2 - y) / sin(radians(30))) * sin(radians(60));
     if (x + xOffset > x2) {
@@ -32,6 +34,7 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
     }
     y += size;
   }
+  
   y = y1;
   x += tHeight * 2;
   while(x < x2) {
@@ -57,6 +60,7 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
     }
     y += size;
   }
+  
   float ratio = (y - y2) / size;
   y = y2;
   x += tHeight * 2 * ratio;
