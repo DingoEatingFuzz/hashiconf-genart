@@ -9,7 +9,9 @@ void setup() {
   
   int padding = 50;
   
-  vagrantGrid(50, padding, padding, width - padding, height - padding);
+  // vagrantGrid(50, padding, padding, width - padding, height - padding);
+  // packerGrid(50, padding, padding, width - padding, height - padding);
+  terraformGrid(50, padding, padding, width - padding, height - padding);
 }
 
 void constrainedLine(float x, float y, float ang, float xLimit, float yLimit) {
@@ -80,10 +82,14 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
   repeatUp30(size, x1, y1, x2, y2);
 }
 
-void packerGrid() {
+void packerGrid(float size, float x1, float y1, float x2, float y2) {
+  repeatVertical(size, x1, y1, x2, y2);
+  repeatDown30(size, x1, y1, x2, y2);
 }
 
-void terraformGrid() {
+void terraformGrid(float size, float x1, float y1, float x2, float y2) {
+  repeatVertical(size, x1, y1, x2, y2);
+  repeatUp30(size, x1, y1, x2, y2);
 }
 
 void vaultGrid() {
