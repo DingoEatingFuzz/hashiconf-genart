@@ -13,10 +13,11 @@ void setup() {
 }
 
 void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
-  float x = x1 + size * sqrt(3) / 2;
+  float tHeight = size * sqrt(3) / 2;
+  float x = x1 + tHeight;
   while (x < x2) {
     line(x, y1, x, y2);
-    x += size * sqrt(3) / 2;
+    x += tHeight;
   }
   
   x = x1;
@@ -32,7 +33,7 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
     y += size;
   }
   y = y1;
-  x += size * sqrt(3);
+  x += tHeight * 2;
   while(x < x2) {
     float xOffset = ((y2 - y) / sin(radians(30))) * sin(radians(60));
     if (x + xOffset > x2) {
@@ -41,7 +42,7 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
     } else {
       line(x, y, x + xOffset, y2);
     }
-    x += size * sqrt(3);
+    x += tHeight * 2;
   }
   
   y = y1;
@@ -58,7 +59,7 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
   }
   float ratio = (y - y2) / size;
   y = y2;
-  x += (size * sqrt(3)) * ratio;
+  x += tHeight * 2 * ratio;
   while(x < x2) {
     float yOffset = ((x2 - x) / sin(radians(60))) * sin(radians(30));
     if (y - yOffset < y1) {
@@ -67,7 +68,7 @@ void vagrantGrid(float size, float x1, float y1, float x2, float y2) {
     } else {
       line(x, y, x2, y - yOffset);
     }
-    x += size * sqrt(3);
+    x += tHeight * 2;
   }
 }
 
