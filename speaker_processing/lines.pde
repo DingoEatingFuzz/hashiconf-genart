@@ -54,6 +54,12 @@ public class ConstrainedLineFactory extends ConstrainedShapeFactory {
     }
   }
 
+  public void ray(float x1, float y1, float ang, Point[] polygon) {
+    float x2 = x1 + cos(ang) * 1000;
+    float y2 = y1 + sin(ang) * 1000;
+    lineSegment(x1, y1, x2, y2, polygon);
+  }
+
   Point lineLineIntersections(Point testStart, Point testEnd, Point subjectStart, Point subjectEnd) {
     // A line can intersect another line 0, 1, or infinity times
     // For the infinity times case, we return no points, since it's the functional equivalent as not intersecting
