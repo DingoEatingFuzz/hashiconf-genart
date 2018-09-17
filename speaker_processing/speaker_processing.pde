@@ -45,6 +45,12 @@ void setup() {
   
   logoGridlines(mainLogoSize);
   drawLogos(mainLogoSize);
+  
+  ProductGrid gridTop = new ProductGrid(30, 10, 10, width - 10, 310);
+  gridTop.consulGrid();
+  
+  ProductGrid gridBottom = new ProductGrid(30, 10, height - metadataMargin - 310, width - 10, height - metadataMargin - 10);
+  gridBottom.consulGrid();
 }
 
 void makeFrame() {
