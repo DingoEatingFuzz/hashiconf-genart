@@ -17,9 +17,9 @@ float wHeight;
 void setup() {
   size(1000, 1600);
   smooth(2);
-  
+
   wHeight = height - metadataMargin;
-  
+
   sprites.put("VAGRANT", loadShape("sprites/vagrant.svg"));
   sprites.put("PACKER", loadShape("sprites/packer.svg"));
   sprites.put("CONSUL", loadShape("sprites/consul.svg"));
@@ -27,29 +27,43 @@ void setup() {
   sprites.put("VAULT", loadShape("sprites/vault.svg"));
   sprites.put("NOMAD", loadShape("sprites/nomad.svg"));
   sprites.put("HASHICORP", loadShape("sprites/hashicorp.svg"));
-  
+
   for(Map.Entry entry : sprites.entrySet()) {
     PShape sprite = (PShape)entry.getValue();
     sprite.disableStyle();
   }
 
   background(150);
-  
+
   stroke(255);
   strokeWeight(1);
   noFill();
   makeFrame();
-  
+
   float mainLogoSize = 450;
   shape(sprites.get("HASHICORP"), width / 2 - mainLogoSize / 2, wHeight / 2 - mainLogoSize / 2, mainLogoSize, mainLogoSize);
-  
+
   logoGridlines(mainLogoSize);
   drawLogos(mainLogoSize);
-  
-  ProductGrid gridTop = new ProductGrid(30, 10, 10, width - 10, 310);
+
+  Point[] topBox = new Point[]{
+    new Point(10, 10),
+    new Point(width - 10, 10),
+    new Point(width - 10, 200),
+    new Point(10, 400),
+  };
+
+  Point[] bottomBox = new Point[]{
+    new Point(10, height - metadataMargin - 200),
+    new Point(width - 10, height - metadataMargin - 400),
+    new Point(width - 10, height - metadataMargin - 10),
+    new Point(10, height - metadataMargin - 10),
+  };
+
+  ProductGrid gridTop = new ProductGrid(30, topBox);
   gridTop.consulGrid();
-  
-  ProductGrid gridBottom = new ProductGrid(30, 10, height - metadataMargin - 310, width - 10, height - metadataMargin - 10);
+
+  ProductGrid gridBottom = new ProductGrid(30, bottomBox);
   gridBottom.consulGrid();
 }
 
@@ -76,7 +90,7 @@ void drawLogos(float size) {
   String[] logoOrder = new String[]{"TERRAFORM", "VAULT", "VAGRANT", "PACKER", "CONSUL", "NOMAD"};
   float logoSize = 150;
   float r = size * 0.8;
-  
+
   for (int i = 0; i < 6; i++) {
     float ang = float(i) * TWO_PI / 6 + TWO_PI / 12;
     pushMatrix();
