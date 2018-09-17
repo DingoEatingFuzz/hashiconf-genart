@@ -12,18 +12,18 @@ void setup() {
   background(20);
   stroke(255);
   textSize(18);
-  
+
   bounds = new Point[]{
     new Point(p, p),
     new Point(width - p, p),
     new Point(width - p, height - p),
     new Point(p, height - p)
   };
-  
+
   star = makeStar(width / 2, height / 2, 5, 150, 400);
-  
-  for (int i = 0; i < 75; i++) {
-    constrainedCircle(random(p, width - p), random(p, height - p), random(30, 250), star);
+
+  for (int i = 0; i < 2000; i++) {
+    constrainedCircle(random(p, width - p), random(p, height - p), random(10, 50), star);
   }
 }
 
@@ -33,7 +33,7 @@ void setup() {
 //  stroke(255);
 //  drawPolygon(bounds);
 //  drawPolygon(star);
-  
+
 //  constrainedCircle(mouseX, mouseY, 150, star);
 //}
 
@@ -58,11 +58,11 @@ Point[] makeStar(float x, float y, int sides, float innerRadius, float outerRadi
 
 public class CircleIntersectionComparable implements Comparator<Point> {
   Point center;
-  
+
   public CircleIntersectionComparable(Point center) {
     this.center = center;
   }
-  
+
   public int compare(Point p1, Point p2) {
     float a1 = atan2(p1.y - center.y, p1.x - center.x);
     float a2 = atan2(p2.y - center.y, p2.x - center.x);
@@ -75,24 +75,24 @@ public class CircleIntersectionComparable implements Comparator<Point> {
 void constrainedCircle(float x, float y, float r, Point[] polygon) {
   // Collect all intersection points
   ArrayList<Point> intersections = new ArrayList<Point>();
+  Point circ = new Point(x, y);
   for (int i = 0; i < polygon.length; i++) {
     Point p1 = polygon[i];
     Point p2 = i != polygon.length - 1 ? polygon[i + 1] : polygon[0];
-    intersections.addAll(circleLineIntersections(p1.x, p1.y, p2.x, p2.y, x, y, r/2));
+    intersections.addAll(circleLineIntersections(p1, p2, circ, r/2));
   }
-  
-  Point circ = new Point(x, y);
+
   Collections.sort(intersections, new CircleIntersectionComparable(circ));
-  
+
   // Intersections are in clockwise order. Draw the arcs between intersections if the arcs are in the bounding box
   int count = intersections.size();
   for (int i = 0; i < count; i++) {
     Point pt = intersections.get(i);
     Point pt2 = i + 1 >= count ? intersections.get(0) : intersections.get(i + 1);
-    
+
     float start = atan2(pt.y - circ.y, pt.x - circ.x);
     float end = atan2(pt2.y - circ.y, pt2.x - circ.x);
-    
+
     // follow the arc to see if the arc is in the bounds
     PVector normalVector = new PVector(pt.x - x, pt.y - y).setMag(1);
     normalVector.rotate(HALF_PI);
@@ -100,15 +100,11 @@ void constrainedCircle(float x, float y, float r, Point[] polygon) {
       drawArc(x, y, r, start, end);
     }
   }
-  
+
   // If there are no intersections and the circle is in the bounding box, just draw the circle
   if (count == 0 && isPointInPolygon(x, y, polygon)) {
     ellipse(x, y, r, r);
   }
-}
-
-boolean isPointInRect(float px, float py, float rx1, float ry1, float rx2, float ry2) {
-  return px >= rx1 && px <= rx2 && py >= ry1 && py <= ry2;
 }
 
 boolean isPointInPolygon(float px, float py, Point[] polygon) {
@@ -129,7 +125,7 @@ boolean isPointInPolygon(float px, float py, Point[] polygon) {
       intersections++;
     }
   }
-  
+
   // An odd number of intersections means the point is in the polygon.
   // Every time the horizontal line intersects with the perimeter of the polygon,
   // the line is either entering or exiting the polygon.
@@ -144,7 +140,7 @@ boolean isPointInPolygon(float px, float py, Point[] polygon) {
 
 boolean pointIsOnSegment(Point test, Point line1, Point line2) {
   if (
-    test.x <= max(line1.x, line2.x) && test.x >= min(line1.x, line2.x) && 
+    test.x <= max(line1.x, line2.x) && test.x >= min(line1.x, line2.x) &&
     test.y <= max(line1.y, line2.y) && test.y >= min(line1.y, line2.y)
   ) {
     return true;
@@ -163,15 +159,15 @@ boolean linesIntersect(Point p1, Point q1, Point p2, Point q2) {
   int o2 = angleOrientation(p1, q1, q2);
   int o3 = angleOrientation(p2, q2, p1);
   int o4 = angleOrientation(p2, q2, q1);
-  
+
   if (o1 != o2 && o3 != o4) return true;
-  
+
   // Colinearity cases
   if (o1 == 0 && pointIsOnSegment(p2, p1, q1)) return true;
   if (o2 == 0 && pointIsOnSegment(q2, p1, q1)) return true;
   if (o3 == 0 && pointIsOnSegment(p1, p2, q2)) return true;
   if (o4 == 0 && pointIsOnSegment(q1, p2, q2)) return true;
-  
+
   return false;
 }
 
@@ -182,12 +178,12 @@ void drawArc(float x, float y, float r, float start, float end) {
   if (end < 0) {
     end += TWO_PI;
   }
-  
+
   if (start == end) {
     ellipse(x, y, r, r);
     return;
   }
-  
+
   arc(x, y, r, r, start, end);
   if (start > end) {
     arc(x, y, r, r, start, TWO_PI);
@@ -203,7 +199,7 @@ class Point {
     this.x = x;
     this.y = y;
   }
-  
+
   public String toString() {
     return "{" + this.x + ", " + this.y + "}";
   }
@@ -214,13 +210,19 @@ float[] quadratic(float a, float b, float c) {
   return new float[]{ (-b - root) / (2 * a), (-b + root) / (2 * a) };
 }
 
-// 9. determine when a circle is entirely within a polygon
 // 4. make it work with lines as well as circles
 // 6. apply it to the product grids
 // 7. create new comp with product logo in the bottom left and grid filling the rest of the space
 // 8. modify comp by adding entropy (circle radius and line spacing)
 
-ArrayList<Point> circleLineIntersections(float lx1, float ly1, float lx2, float ly2, float cx, float cy, float r) {
+ArrayList<Point> circleLineIntersections(Point l1, Point l2, Point circleCenter, float r) {
+  float lx1 = l1.x;
+  float ly1 = l1.y;
+  float lx2 = l2.x;
+  float ly2 = l2.y;
+  float cx = circleCenter.x;
+  float cy = circleCenter.y;
+
   ArrayList<Point> intersections = new ArrayList<Point>();
   PVector vector = new PVector(lx2 - lx1, ly2 - ly1);
   boolean isVertical = lx2 - lx1 == 0;
@@ -232,13 +234,13 @@ ArrayList<Point> circleLineIntersections(float lx1, float ly1, float lx2, float 
     ly2 = ly1;
     ly1 = tmpy;
   }
-  
+
   // Intersections need to be collected in a clockwise order. Whether points should be collected from
   // left-to-right or right-to-left is based on the angle of the vector of the line segment.
   // If the angle of the line segment is between 270 and 90 (right side), we want ltr, otherwise,
   // we want rtl.
   boolean rtl = isVertical && vector.y > 0 || vector.x < 0;
-  
+
   if (isVertical) {
     // (x - cx)^2 + (y - cy)^2 = r^2
     // (lx1 - cx)^2 + (y - cy)^2 = r^2
@@ -259,7 +261,7 @@ ArrayList<Point> circleLineIntersections(float lx1, float ly1, float lx2, float 
   } else {
     float slope = isVertical ? Float.MAX_VALUE : (ly2 - ly1) / (lx2 - lx1);
     float yInt = ly1 - slope * lx1;
-    
+
     // Quadratic form of this circle and this line segment
     float a = slope * slope + 1;
     // 2(mc−mq−p)
@@ -267,12 +269,12 @@ ArrayList<Point> circleLineIntersections(float lx1, float ly1, float lx2, float 
     // (q^2−r^2+p^2−2cq+c^2)
     float c = cy * cy - r * r + cx * cx - 2 * yInt * cy + yInt * yInt;
     float delta = b * b - 4 * a * c;
-    
+
     // Line either does not intersect or lies tangent
     if (delta <= 0) {
       return intersections;
     }
-    
+
     float[] xCoords = quadratic(a, b, c);
     if (rtl) {
       xCoords = reverse(xCoords);
