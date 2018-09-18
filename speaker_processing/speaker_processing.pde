@@ -11,9 +11,6 @@ void setup() {
   noFill();
 
   ProductWheelComp comp1 = new ProductWheelComp();
-  ProductComp comp2 = new ProductComp("CONSUL");
+  ProductComp comp2 = new ProductComp("VAULT");
   comp2.draw();
 }
-
-// Not all of the diagonal line functions extend the full breadth of a polygon
-// All that code is due for a refactor anyway
