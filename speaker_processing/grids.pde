@@ -39,7 +39,7 @@ public class ProductGrid {
     repeatLines(size * sqrt(3), radians(90), polygon);
     repeatLines(size * sqrt(3), radians(30), polygon);
     repeatLines(size * sqrt(3), radians(-30), polygon);
-    // repeatCircles(size * 2, polygon);
+    repeatCircles(size * sqrt(3), polygon);
   }
 
   public void nomadGrid() {
@@ -80,19 +80,29 @@ public class ProductGrid {
     }
   }
 
-  void repeatCircles(float size, Point[] polygon) {
-    BoundingBox bbox = new BoundingBox(polygon);
-    float tHeight = size * sqrt(3) / 2;
-    float y = bbox.yMin - size / 2;
-    float x = bbox.xMin - tHeight;
+  void repeatCircles(float spacing, Point[] polygon) {
+    float tHeight = spacing;
+    float size = (spacing * 2) / sqrt(3);
     float r = size * 4 / 3;
+
+    BoundingBox bbox = new BoundingBox(polygon);
+    float dx = bbox.xMax - bbox.xMin;
+    float dy = bbox.yMax - bbox.yMin;
+    Point center = new Point(bbox.xMin + dx / 2, bbox.yMin + dy / 2);
+
+    float startY = center.y - ceil(dy / 2 / size) * size;
+    float startX = center.x - ceil(dx / 2 / (tHeight*2)) * tHeight * 2;
+
+    float y = startY;
+    float x = startX;
+
     while (y < bbox.yMax + size / 2) {
       while (x < bbox.xMax + tHeight) {
         constrainedCircles.circle(x, y, r, polygon);
         constrainedCircles.circle(x + tHeight, y + size / 2, r, polygon);
         x += tHeight * 2;
       }
-      x = bbox.xMin - tHeight;
+      x = startX;
       y += size;
     }
   }

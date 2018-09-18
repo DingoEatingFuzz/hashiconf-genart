@@ -4,10 +4,12 @@ public class ProductComp {
   HashMap<String, PShape> sprites;
   String product;
   PShape productSprite;
+  float size;
 
-  public ProductComp(String product) {
+  public ProductComp(String product, float size) {
     this.sprites = new HashMap<String, PShape>();
     this.product = product;
+    this.size = size;
 
     sprites.put("VAGRANT", loadShape("sprites/vagrant.svg"));
     sprites.put("PACKER", loadShape("sprites/packer.svg"));
@@ -51,7 +53,7 @@ public class ProductComp {
       new Point(300 + 10 + 10, height - 10),
       new Point(10, height - 300 - 10 - 10),
     };
-    ProductGrid grid = new ProductGrid(30, polygon);
+    ProductGrid grid = new ProductGrid(size, polygon);
 
     if (product == "VAGRANT") grid.vagrantGrid();
     if (product == "PACKER") grid.packerGrid();
