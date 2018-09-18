@@ -14,99 +14,69 @@ public class ProductGrid {
   }
 
   public void vagrantGrid() {
-    repeatVertical(size, polygon);
-    repeatDown30(size, polygon);
-    repeatUp30(size, polygon);
+    repeatLines(size * sqrt(3) / 2, radians(90), polygon);
+    repeatLines(size * sqrt(3) / 2, radians(-30), polygon);
+    repeatLines(size * sqrt(3) / 2, radians(30), polygon);
   }
 
   public void packerGrid() {
-    repeatVertical(size, polygon);
-    repeatDown30(size, polygon);
+    repeatLines(size * sqrt(3) / 2, radians(90), polygon);
+    repeatLines(size * sqrt(3) / 2, radians(-30), polygon);
   }
 
   public void terraformGrid() {
-    repeatVertical(size, polygon);
-    repeatUp30(size, polygon);
+    repeatLines(size * sqrt(3) / 2, radians(90), polygon);
+    repeatLines(size * sqrt(3) / 2, radians(30), polygon);
   }
 
   public void vaultGrid() {
-    repeatHorizontal(size, polygon);
-    repeatDown60(size, polygon);
-    repeatUp60(size, polygon);
+    repeatLines(size * sqrt(3) / 2, 0, polygon);
+    repeatLines(size * sqrt(3) / 2, radians(-60), polygon);
+    repeatLines(size * sqrt(3) / 2, radians(60), polygon);
   }
 
   public void consulGrid() {
-    repeatVertical(size * 2, polygon);
-    repeatDown30(size * 2, polygon);
-    repeatUp30(size * 2, polygon);
-    repeatCircles(size * 2, polygon);
+    repeatLines(size * sqrt(3), radians(90), polygon);
+    repeatLines(size * sqrt(3), radians(30), polygon);
+    repeatLines(size * sqrt(3), radians(-30), polygon);
+    // repeatCircles(size * 2, polygon);
   }
 
   public void nomadGrid() {
-    repeatDown30(size, polygon);
-    repeatUp30(size, polygon);
+    repeatLines(size * sqrt(3) / 2, radians(-30), polygon);
+    repeatLines(size * sqrt(3) / 2, radians(30), polygon);
   }
 
-  void repeatVertical(float size, Point[] polygon) {
-    // Vertical lines from left to right
+  void repeatLines(float spacing, float ang, Point[] polygon) {
+    float normal = ang + HALF_PI;
     BoundingBox bbox = new BoundingBox(polygon);
-    float tHeight = size * sqrt(3) / 2;
-    float x = bbox.xMin + tHeight;
-    while (x < bbox.xMax) {
-      constrainedLines.lineSegment(x, bbox.yMin, x, bbox.yMax, polygon);
-      x += tHeight;
-    }
-  }
 
-  void repeatHorizontal(float size, Point[] polygon) {
-    BoundingBox bbox = new BoundingBox(polygon);
-    float tHeight = size * sqrt(3) / 2;
-    float y = bbox.yMin + tHeight;
-    while (y < bbox.yMax) {
-      constrainedLines.lineSegment(bbox.xMin, y, bbox.xMax, y, polygon);
-      y += tHeight;
-    }
-  }
+    float dx = bbox.xMax - bbox.xMin;
+    float dy = bbox.yMax - bbox.yMin;
+    Point center = new Point(bbox.xMin + dx / 2, bbox.yMin + dy / 2);
+    // Round to the nearest spacing multiple to ensure a line goes through the center.
+    // This ensures that patterns are in sync when drawing lines at various angles.
+    float maxDimension = ceil(max(dx, dy) / spacing) * spacing;
 
-  void repeatDown30(float size, Point[] polygon) {
-    BoundingBox bbox = new BoundingBox(polygon);
-    float tHeight = size * sqrt(3) / 2;
-    float x = bbox.xMin;
-    float y = bbox.yMin;
+    float cosNormal = cos(normal);
+    float sinNormal = sin(normal);
+    float cosAng = cos(ang);
+    float sinAng = sin(ang);
 
-    // 30deg lines from top-left to bottom-left
-    while (y < bbox.yMax) {
-      constrainedLines.ray(x, y, radians(30), polygon);
-      y += size;
-    }
+    Point start = new Point(center.x - cosNormal * maxDimension, center.y + sinNormal * maxDimension);
+    Point end = new Point(center.x + cosNormal * maxDimension, center.y - sinNormal * maxDimension);
 
-    // 30 deg lines from top-left to top-right;
-    y = bbox.yMin;
-    x += tHeight * 2;
-    while(x < bbox.xMax) {
-      constrainedLines.ray(x, y, radians(30), polygon);
-      x += tHeight * 2;
-    }
-  }
+    float length = dist(start.x, start.y, end.x, end.y);
+    int count = ceil(length / spacing);
 
-  void repeatUp30(float size, Point[] polygon) {
-    BoundingBox bbox = new BoundingBox(polygon);
-    float tHeight = size * sqrt(3) / 2;
-    float y = bbox.yMin;
-    float x = bbox.xMin;
-
-    // -30deg lines from top-left to bottom-left
-    while(y < bbox.yMax) {
-      constrainedLines.ray(x, y, radians(-30), polygon);
-      y += size;
-    }
-
-    // -30deg lines from bottom-left to bottom-right
-    x += tHeight * 2 * ((y - bbox.yMax) / size); // start x proportionally based on the remainder between y and the max y)
-    y = bbox.yMax;
-    while(x < bbox.xMax) {
-      constrainedLines.ray(x, y, radians(-30), polygon);
-      x += tHeight * 2;
+    for (int i = 0; i < count; i++) {
+      float px = start.x + cosNormal * spacing * i;
+      float py = start.y - sinNormal * spacing * i;
+      constrainedLines.lineSegment(
+        px - cosAng * maxDimension, py + sinAng * maxDimension,
+        px + cosAng * maxDimension, py - sinAng * maxDimension,
+        polygon
+      );
     }
   }
 
@@ -124,48 +94,6 @@ public class ProductGrid {
       }
       x = bbox.xMin - tHeight;
       y += size;
-    }
-  }
-
-  void repeatDown60(float size, Point[] polygon) {
-    BoundingBox bbox = new BoundingBox(polygon);
-    float tHeight = size * sqrt(3) / 2;
-    float x = bbox.xMin;
-    float y = bbox.yMin;
-
-    // 30deg lines from top-left to bottom-left
-    while (y < bbox.yMax) {
-      constrainedLines.ray(x, y, radians(60), polygon);
-      y += tHeight * 2;
-    }
-
-    // 30 deg lines from top-left to top-right;
-    y = bbox.yMin;
-    x += size;
-    while(x < bbox.xMax) {
-      constrainedLines.ray(x, y, radians(60), polygon);
-      x += size;
-    }
-  }
-
-  void repeatUp60(float size, Point[] polygon) {
-    BoundingBox bbox = new BoundingBox(polygon);
-    float tHeight = size * sqrt(3) / 2;
-    float y = bbox.yMin;
-    float x = bbox.xMin;
-
-    // -30deg lines from top-left to bottom-left
-    while(y < bbox.yMax) {
-      constrainedLines.ray(x, y, radians(-60), polygon);
-      y += tHeight * 2;
-    }
-
-    // -30deg lines from bottom-left to bottom-right
-    x += size * ((y - bbox.yMax) / (tHeight * 2)); // start x proportionally based on the remainder between y and the max y)
-    y = bbox.yMax;
-    while(x < bbox.xMax) {
-      constrainedLines.ray(x, y, radians(-60), polygon);
-      x += size;
     }
   }
 }
