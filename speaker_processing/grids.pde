@@ -16,42 +16,50 @@ public class ProductGrid {
   }
 
   public void vagrantGrid() {
-    repeatLines(size * sqrt(3) / 2, radians(90), polygon);
-    repeatLines(size * sqrt(3) / 2, radians(-30), polygon);
-    repeatLines(size * sqrt(3) / 2, radians(30), polygon);
+    float s = size * sqrt(3) / 2;
+    repeatLines(s, radians(90), polygon, round(s * entropy));
+    repeatLines(s, radians(-30), polygon, 0);
+    repeatLines(s, radians(30), polygon, 0);
   }
 
   public void packerGrid() {
-    repeatLines(size * sqrt(3) / 2, radians(90), polygon);
-    repeatLines(size * sqrt(3) / 2, radians(-30), polygon);
+    float s = size * sqrt(3) / 2;
+    repeatLines(s, radians(90), polygon, round(s * entropy));
+    repeatLines(s, radians(-30), polygon, round(s * entropy));
   }
 
   public void terraformGrid() {
-    repeatLines(size * sqrt(3) / 2, radians(90), polygon);
-    repeatLines(size * sqrt(3) / 2, radians(30), polygon);
+    float s = size * sqrt(3) / 2;
+    repeatLines(s, radians(90), polygon, round(s * entropy));
+    repeatLines(s, radians(30), polygon, round(s * entropy));
   }
 
   public void vaultGrid() {
-    repeatLines(size * sqrt(3) / 2, 0, polygon);
-    repeatLines(size * sqrt(3) / 2, radians(-60), polygon);
-    repeatLines(size * sqrt(3) / 2, radians(60), polygon);
+    float s = size * sqrt(3) / 2;
+    repeatLines(s, 0, polygon, round(s * entropy));
+    repeatLines(s, radians(-60), polygon, 0);
+    repeatLines(s, radians(60), polygon, 0);
   }
 
   public void consulGrid() {
-    repeatLines(size * sqrt(3), radians(90), polygon);
-    repeatLines(size * sqrt(3), radians(30), polygon);
-    repeatLines(size * sqrt(3), radians(-30), polygon);
-    repeatCircles(size * sqrt(3), polygon, round((size * sqrt(3)) * entropy));
+    float s = size * sqrt(3);
+    repeatLines(s, radians(90), polygon, 0);
+    repeatLines(s, radians(30), polygon, 0);
+    repeatLines(s, radians(-30), polygon, 0);
+    repeatCircles(s, polygon, round(s * entropy));
   }
 
   public void nomadGrid() {
-    repeatLines(size * sqrt(3) / 2, radians(-30), polygon);
-    repeatLines(size * sqrt(3) / 2, radians(30), polygon);
+    float s = size * sqrt(3) / 2;
+    repeatLines(s, radians(-30), polygon, round(s * entropy));
+    repeatLines(s, radians(30), polygon, round(s * entropy));
   }
 
-  void repeatLines(float spacing, float ang, Point[] polygon) {
+  void repeatLines(float spacing, float ang, Point[] polygon, int jitter) {
     float normal = ang + HALF_PI;
     BoundingBox bbox = new BoundingBox(polygon);
+
+    float maxJAngle = jitter == 0 ? 0 : PI / 50 * entropy / 2;
 
     float dx = bbox.xMax - bbox.xMin;
     float dy = bbox.yMax - bbox.yMin;
@@ -74,9 +82,13 @@ public class ProductGrid {
     for (int i = 0; i < count; i++) {
       float px = start.x + cosNormal * spacing * i;
       float py = start.y - sinNormal * spacing * i;
+      float jspacing = map(noise(px, py), 0, 1, -jitter, jitter);
+      float jAngle = map(noise(px, py), 0, 1, -maxJAngle, maxJAngle);
+      px = px + cosNormal * jspacing;
+      py = py + sinNormal * jspacing;
       constrainedLines.lineSegment(
-        px - cosAng * maxDimension, py + sinAng * maxDimension,
-        px + cosAng * maxDimension, py - sinAng * maxDimension,
+        px - (cosAng + jAngle) * maxDimension, py + (sinAng + jAngle) * maxDimension,
+        px + (cosAng + jAngle) * maxDimension, py - (sinAng + jAngle) * maxDimension,
         polygon
       );
     }
