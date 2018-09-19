@@ -1,13 +1,15 @@
 public class ProductGrid {
   float size;
+  float entropy;
   Point[] polygon;
 
   ConstrainedLineFactory constrainedLines;
   ConstrainedCircleFactory constrainedCircles;
 
-  public ProductGrid(float size, Point[] polygon) {
+  public ProductGrid(float size, Point[] polygon, float entropy) {
     this.size = size;
     this.polygon = polygon;
+    this.entropy = entropy;
 
     this.constrainedCircles = new ConstrainedCircleFactory();
     this.constrainedLines = new ConstrainedLineFactory();
@@ -39,7 +41,7 @@ public class ProductGrid {
     repeatLines(size * sqrt(3), radians(90), polygon);
     repeatLines(size * sqrt(3), radians(30), polygon);
     repeatLines(size * sqrt(3), radians(-30), polygon);
-    repeatCircles(size * sqrt(3), polygon);
+    repeatCircles(size * sqrt(3), polygon, round((size * sqrt(3)) * entropy));
   }
 
   public void nomadGrid() {
@@ -80,7 +82,7 @@ public class ProductGrid {
     }
   }
 
-  void repeatCircles(float spacing, Point[] polygon) {
+  void repeatCircles(float spacing, Point[] polygon, int jitter) {
     float tHeight = spacing;
     float size = (spacing * 2) / sqrt(3);
     float r = size * 4 / 3;
@@ -98,8 +100,10 @@ public class ProductGrid {
 
     while (y < bbox.yMax + size / 2) {
       while (x < bbox.xMax + tHeight) {
-        constrainedCircles.circle(x, y, r, polygon);
-        constrainedCircles.circle(x + tHeight, y + size / 2, r, polygon);
+        float jr = r + map(noise(x, y), 0, 1, -jitter * 1.5, jitter * 0.5);
+        float jr2 = r + map(noise(x + tHeight, y + size / 2), 0, 1, -jitter * 1.5, jitter * 0.5);
+        constrainedCircles.circle(x, y, jr, polygon);
+        constrainedCircles.circle(x + tHeight, y + size / 2, jr2, polygon);
         x += tHeight * 2;
       }
       x = startX;

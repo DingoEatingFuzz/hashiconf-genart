@@ -46,10 +46,10 @@ public class ProductWheelComp {
       new Point(10, height - metadataMargin - 10),
     };
 
-    ProductGrid gridTop = new ProductGrid(30, topBox);
+    ProductGrid gridTop = new ProductGrid(30, topBox, 0);
     gridTop.consulGrid();
 
-    ProductGrid gridBottom = new ProductGrid(30, bottomBox);
+    ProductGrid gridBottom = new ProductGrid(30, bottomBox, 0);
     gridBottom.consulGrid();
   }
 
