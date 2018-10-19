@@ -6,7 +6,7 @@ float duration = 50;
 String[] products = { "VAGRANT", "PACKER", "VAULT", "TERRAFORM", "CONSUL", "NOMAD" };
 
 void setup() {
-  size(1000, 1600);
+  size(500, 800);
   smooth(2);
   stroke(0);
   strokeWeight(1);
@@ -14,10 +14,15 @@ void setup() {
 
   background(255);
 
-  // ProductWheelComp comp1 = new ProductWheelComp();
-  // ProductComp comp2 = new ProductComp("VAGRANT", 50, 0.7);
-  // comp2.draw();
+  ProductWheelComp comp1 = new ProductWheelComp();
+  ProductComp comp2 = new ProductComp("VAULT", 35, 0.9);
+  comp2.draw();
 
+  //exportAll();
+  //exit();
+}
+
+void exportAll() {
   // draw all the controls
   for (int i = 0; i < products.length; i++) {
     clear();
@@ -37,19 +42,18 @@ void setup() {
     for (int productIndex = 0; productIndex < products.length; productIndex++) {
       clear();
       background(255);
-      noiseSeed(i * productIndex);
+      noiseSeed(i * (productIndex + 1));
 
       String product = products[productIndex];
       beginRecord(SVG, "samples/" + product.toLowerCase() + "-" + i + ".svg");
       stroke(0);
       strokeWeight(1);
       noFill();
-      ProductComp comp = new ProductComp(product, 50, 0.8);
+      ProductComp comp = new ProductComp(product, 50, 0.9);
       comp.draw();
       endRecord();
     }
   }
-  exit();
 }
 
 // void draw() {

@@ -1,6 +1,7 @@
 public class ProductGrid {
   float size;
   float entropy;
+  float skipLineThreshold = 0.6;
   Point[] polygon;
 
   ConstrainedLineFactory constrainedLines;
@@ -17,45 +18,45 @@ public class ProductGrid {
 
   public void vagrantGrid() {
     float s = size * sqrt(3) / 2;
-    repeatLines(s, radians(90), polygon, round(s * entropy));
-    repeatLines(s, radians(-30), polygon, 0);
-    repeatLines(s, radians(30), polygon, 0);
+    repeatLines(s, radians(90), polygon, 0, 1);
+    repeatLines(s, radians(-30), polygon, round(s * entropy), skipLineThreshold);
+    repeatLines(s, radians(30), polygon, round(s * entropy), skipLineThreshold);
   }
 
   public void packerGrid() {
     float s = size * sqrt(3) / 2;
-    repeatLines(s, radians(90), polygon, round(s * entropy));
-    repeatLines(s, radians(-30), polygon, round(s * entropy));
+    repeatLines(s, radians(90), polygon, round(s * entropy), 1);
+    repeatLines(s, radians(-30), polygon, round(s * entropy), skipLineThreshold);
   }
 
   public void terraformGrid() {
     float s = size * sqrt(3) / 2;
-    repeatLines(s, radians(90), polygon, round(s * entropy));
-    repeatLines(s, radians(30), polygon, round(s * entropy));
+    repeatLines(s, radians(90), polygon, round(s * entropy), 1);
+    repeatLines(s, radians(30), polygon, round(s * entropy), skipLineThreshold);
   }
 
   public void vaultGrid() {
     float s = size * sqrt(3) / 2;
-    repeatLines(s, 0, polygon, round(s * entropy));
-    repeatLines(s, radians(-60), polygon, 0);
-    repeatLines(s, radians(60), polygon, 0);
+    repeatLines(s, 0, polygon, round(s * entropy), 1);
+    repeatLines(s, radians(-60), polygon, 0, skipLineThreshold);
+    repeatLines(s, radians(60), polygon, 0, skipLineThreshold);
   }
 
   public void consulGrid() {
     float s = size * sqrt(3);
-    repeatLines(s, radians(90), polygon, 0);
-    repeatLines(s, radians(30), polygon, 0);
-    repeatLines(s, radians(-30), polygon, 0);
+    repeatLines(s, radians(90), polygon, 0, 1);
+    repeatLines(s, radians(30), polygon, 0, 1);
+    repeatLines(s, radians(-30), polygon, 0, 1);
     repeatCircles(s, polygon, round(s * entropy));
   }
 
   public void nomadGrid() {
     float s = size * sqrt(3) / 2;
-    repeatLines(s, radians(-30), polygon, round(s * entropy));
-    repeatLines(s, radians(30), polygon, round(s * entropy));
+    repeatLines(s, radians(-30), polygon, round(s * entropy), skipLineThreshold);
+    repeatLines(s, radians(30), polygon, round(s * entropy), skipLineThreshold);
   }
 
-  void repeatLines(float spacing, float ang, Point[] polygon, int jitter) {
+  void repeatLines(float spacing, float ang, Point[] polygon, int jitter, float drawThreshold) {
     float normal = ang + HALF_PI;
     BoundingBox bbox = new BoundingBox(polygon);
 
@@ -86,11 +87,15 @@ public class ProductGrid {
       float jAngle = map(noise(px, py), 0, 1, -maxJAngle, maxJAngle);
       px = px + cosNormal * jspacing;
       py = py + sinNormal * jspacing;
-      constrainedLines.lineSegment(
-        px - (cosAng + jAngle) * maxDimension, py + (sinAng + jAngle) * maxDimension,
-        px + (cosAng + jAngle) * maxDimension, py - (sinAng + jAngle) * maxDimension,
-        polygon
-      );
+      if (noise(i) < drawThreshold) {
+        constrainedLines.lineSegment(
+          px - (cosAng + jAngle) * maxDimension, py + (sinAng + jAngle) * maxDimension,
+          px + (cosAng + jAngle) * maxDimension, py - (sinAng + jAngle) * maxDimension,
+          polygon
+        );
+      } else {
+        println("skipping line");
+      }
     }
   }
 
