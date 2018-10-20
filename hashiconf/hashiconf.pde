@@ -1,71 +1,47 @@
 import processing.svg.*;
 
-float i = 0;
-float p = 0;
-float duration = 50;
 String[] products = { "VAGRANT", "PACKER", "VAULT", "TERRAFORM", "CONSUL", "NOMAD" };
 
-float s = PI;
-
-void setup() {
-  size(528, 816);
-  smooth(2);
+void docSetup() {
+  clear();
   stroke(0);
   strokeWeight(1);
   noFill();
-
   background(255);
+}
 
-  //ProductWheelComp comp1 = new ProductWheelComp();
-  ProductComp comp = new ProductComp("NOMAD", 30, 0.9);
-  
-  beginRecord(SVG, "temp/test-7.svg");
+void setup() {
+  size(528, 816); // 8.5" x 5.5" when plotted
+  smooth(2);
+  docSetup();
+
+  int seed = 0;
+  if (args != null) {
+    seed = parseInt(args[0]);
+  } else {
+    println("No seed provided");
+  }
+
+  noiseSeed(seed);
+  println("Seed: " + seed);
+
+  int productIndex = seed % products.length;
+  String product = products[productIndex];
+  println("Product: " + productIndex + " (" + product + ")");
+
+  ProductComp comp = new ProductComp(product, 30, 0.9);
+
+  // Draw once for the records
+  beginRecord(SVG, "archive/plot-" + seed + "-" + product.toLowerCase() + ".svg");
   comp.draw();
   endRecord();
 
-  //exportAll();
-  //exit();
+  docSetup();
+
+  // Draw again to override latest
+  beginRecord(SVG, "latest.svg");
+  comp.draw();
+  endRecord();
+
+  exit();
 }
-
-void exportAll() {
-  // draw all the controls
-  for (int i = 0; i < products.length; i++) {
-    clear();
-    background(255);
-
-    String product = products[i];
-    beginRecord(SVG, "controls/" + product.toLowerCase() + ".svg");
-    stroke(0);
-    strokeWeight(1);
-    noFill();
-    ProductComp comp = new ProductComp(product, 50, 0);
-    comp.draw();
-    endRecord();
-  }
-  // draw 15 instances of each chart
-  for (int i = 1; i <= 0; i++) {
-    for (int productIndex = 0; productIndex < products.length; productIndex++) {
-      clear();
-      background(255);
-      noiseSeed(i * (productIndex + 1));
-
-      String product = products[productIndex];
-      beginRecord(SVG, "samples/" + product.toLowerCase() + "-" + i + ".svg");
-      stroke(0);
-      strokeWeight(1);
-      noFill();
-      ProductComp comp = new ProductComp(product, 50, 0.9);
-      comp.draw();
-      endRecord();
-    }
-  }
-}
-
-// void draw() {
-//   clear();
-//   background(255);
-//   ProductComp comp2 = new ProductComp(products[floor(p/duration)%products.length], 50 + sin(i) * 10, 0.7);
-//   comp2.draw();
-//   i = (i + PI / 40) % TWO_PI;
-//   p++;
-// }

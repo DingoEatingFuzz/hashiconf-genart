@@ -43,18 +43,24 @@ public class ProductComp {
   }
 
   public void draw() {
-    // draw the frame
-    // makeFrame();
-    // place the logo
-    float logoSize = 150;
+    // Draw the grid
     makeGrid();
+
+    // Draw the product logo
+    noFill();
+    float logoSize = 150;
     pushMatrix();
     translate(logoSize / 2 + 50, height - 50 - 50 - logoSize / 2);
     shape(productSprite, -logoSize / 2, -logoSize / 2, logoSize, logoSize);
+
+    // Write out the product version number
+    noFill();
     Text t = new Text();
     t.write(this.version, 0, ceil(logoSize / 2), 3);
     popMatrix();
-    // draw the grid
+
+    // Draw the HashiCorp and HashiConf branding
+    noFill();
     shape(sprites.get("HASHICORP"), width - 137 - 30, height - 52, 25, 25);
     shape(sprites.get("HASHICONF"), width - 107 - 30, height - 50, 107, 20); 
   }
@@ -63,7 +69,7 @@ public class ProductComp {
     int margin = 30;
     int offset = 5;
     int caption = 30;
-    
+
     Point[] polygon = new Point[]{
       new Point(margin + offset, margin + offset), // top-left
       new Point(width - margin - offset, margin + offset), // top-right
@@ -72,6 +78,7 @@ public class ProductComp {
     polygon = (Point[])concat(polygon, hexagonPoints(150, 40, 60, margin + offset, caption));
     drawPolygon(polygon);
 
+    noFill();
     Point[] outerPolygon = new Point[]{
       new Point(margin, margin), // top-left
       new Point(width - margin, margin), // top-right
@@ -80,6 +87,7 @@ public class ProductComp {
     outerPolygon = (Point[])concat(outerPolygon, hexagonPoints(143, 30, 50, margin, caption));
     drawPolygon(outerPolygon);
 
+    noFill();
     ProductGrid grid = new ProductGrid(size, polygon, entropy);
 
     if (product == "VAGRANT") grid.vagrantGrid();
