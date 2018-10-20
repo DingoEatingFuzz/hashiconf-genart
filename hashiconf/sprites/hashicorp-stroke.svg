@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 36.2 38.1" enable-background="new 0 0 36.2 38.1" xml:space="preserve">
+<title>HashiCorp Logo</title>
+<desc>Created with Sketch.</desc>
+<g id="_x2713_--Assets">
+	<g id="Asstes" transform="translate(-48.000000, -48.000000)">
+		<g id="Logo" transform="translate(48.000000, 48.000000)">
+			<g id="Clip-9">
+			</g>
+			<defs>
+				<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0" y="0" width="15.4" height="29.2">
+					<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+				</filter>
+			</defs>
+			<mask maskUnits="userSpaceOnUse" x="0" y="0" width="15.4" height="29.2" id="mask-2_8_">
+				<g filter="url(#Adobe_OpacityMaskFilter)">
+					<polygon id="path-1_8_" fill="#FFFFFF" points="0.2,37.7 159.9,37.7 159.9,0.4 0.2,0.4 					"/>
+				</g>
+			</mask>
+			<polyline id="Fill-14_1_" mask="url(#mask-2_8_)" fill="none" stroke="#000000" stroke-miterlimit="10" points="15.2,0.4 
+				0.5,8.9 0.5,8.9 0.5,29.2 			"/>
+			<defs>
+				<filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="10.7" y="18.7" width="14.9" height="1">
+					<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+				</filter>
+			</defs>
+			<mask maskUnits="userSpaceOnUse" x="10.7" y="18.7" width="14.9" height="1" id="mask-2_10_">
+				<g filter="url(#Adobe_OpacityMaskFilter_1_)">
+					<polygon id="path-1_10_" fill="#FFFFFF" points="0.2,37.7 159.9,37.7 159.9,0.4 0.2,0.4 					"/>
+				</g>
+			</mask>
+			
+				<line id="Fill-15_3_" mask="url(#mask-2_10_)" fill="none" stroke="#000000" stroke-miterlimit="10" x1="10.7" y1="19.2" x2="25.5" y2="19.2"/>
+			<defs>
+				<filter id="Adobe_OpacityMaskFilter_2_" filterUnits="userSpaceOnUse" x="10.2" y="11.8" width="1" height="24.9">
+					<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+				</filter>
+			</defs>
+			<mask maskUnits="userSpaceOnUse" x="10.2" y="11.8" width="1" height="24.9" id="mask-2_6_">
+				<g filter="url(#Adobe_OpacityMaskFilter_2_)">
+					<polygon id="path-1_6_" fill="#FFFFFF" points="1.2,37.7 160.9,37.7 160.9,0.4 1.2,0.4 					"/>
+				</g>
+			</mask>
+			
+				<line id="Fill-15_1_" mask="url(#mask-2_6_)" fill="none" stroke="#000000" stroke-miterlimit="10" x1="10.7" y1="11.8" x2="10.7" y2="36.7"/>
+			<defs>
+				<filter id="Adobe_OpacityMaskFilter_3_" filterUnits="userSpaceOnUse" x="25" y="1.4" width="1" height="24.9">
+					<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+				</filter>
+			</defs>
+			<mask maskUnits="userSpaceOnUse" x="25" y="1.4" width="1" height="24.9" id="mask-2_11_">
+				<g filter="url(#Adobe_OpacityMaskFilter_3_)">
+					<polygon id="path-1_11_" fill="#FFFFFF" points="-0.8,37.7 158.9,37.7 158.9,0.4 -0.8,0.4 					"/>
+				</g>
+			</mask>
+			
+				<line id="Fill-15_4_" mask="url(#mask-2_11_)" fill="none" stroke="#000000" stroke-miterlimit="10" x1="25.5" y1="26.4" x2="25.5" y2="1.4"/>
+			<defs>
+				<filter id="Adobe_OpacityMaskFilter_4_" filterUnits="userSpaceOnUse" x="20.8" y="8.9" width="15.4" height="29.2">
+					<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+				</filter>
+			</defs>
+			<mask maskUnits="userSpaceOnUse" x="20.8" y="8.9" width="15.4" height="29.2" id="mask-2_9_">
+				<g filter="url(#Adobe_OpacityMaskFilter_4_)">
+					<polygon id="path-1_9_" fill="#FFFFFF" points="0.2,37.7 159.9,37.7 159.9,0.4 0.2,0.4 					"/>
+				</g>
+			</mask>
+			<polyline id="Fill-16_1_" mask="url(#mask-2_9_)" fill="none" stroke="#000000" stroke-miterlimit="10" points="21,37.7 
+				35.7,29.2 35.7,29.2 35.7,8.9 			"/>
+		</g>
+	</g>
+</g>
+</svg>
