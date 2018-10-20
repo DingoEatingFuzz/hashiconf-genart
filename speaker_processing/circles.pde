@@ -146,10 +146,11 @@ public class ConstrainedCircleFactory extends ConstrainedShapeFactory {
       return;
     }
 
-    arc(x, y, r, r, start, end);
+    noFill();
+    arc(x, y, r, r, start, end, OPEN);
     if (start > end) {
-      arc(x, y, r, r, start, TWO_PI);
-      arc(x, y, r, r, 0, end);
+      arc(x, y, r, r, start, TWO_PI, OPEN);
+      arc(x, y, r, r, 0, end, OPEN);
     }
   }
 }

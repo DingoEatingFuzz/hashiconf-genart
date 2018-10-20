@@ -5,8 +5,10 @@ float p = 0;
 float duration = 50;
 String[] products = { "VAGRANT", "PACKER", "VAULT", "TERRAFORM", "CONSUL", "NOMAD" };
 
+float s = PI;
+
 void setup() {
-  size(550, 850);
+  size(528, 816);
   smooth(2);
   stroke(0);
   strokeWeight(1);
@@ -15,9 +17,10 @@ void setup() {
   background(255);
 
   //ProductWheelComp comp1 = new ProductWheelComp();
-  ProductComp comp2 = new ProductComp("VAGRANT", 30, 0.9);
-  beginRecord(SVG, "temp/text.svg");
-  comp2.draw();
+  ProductComp comp = new ProductComp("NOMAD", 30, 0.9);
+  
+  beginRecord(SVG, "temp/test-7.svg");
+  comp.draw();
   endRecord();
 
   //exportAll();

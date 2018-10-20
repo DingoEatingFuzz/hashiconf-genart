@@ -36,7 +36,7 @@ public class Text {
         pLine(3, 6, 1, 6, size);
         break;
       case '4':
-        pLine(3, 1, 1, 3, size);
+        pLine(1, 1, 1, 3, size);
         pLine(1, 3, 3, 3, size);
         pLine(3, 1, 3, 6, size);
         break;

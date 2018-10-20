@@ -22,6 +22,7 @@ public class ProductComp {
     sprites.put("VAULT", loadShape("sprites/vault.svg"));
     sprites.put("NOMAD", loadShape("sprites/nomad.svg"));
     sprites.put("HASHICORP", loadShape("sprites/hashicorp.svg"));
+    sprites.put("HASHICONF", loadShape("sprites/hashiconf-18-2.svg"));
 
     for(Map.Entry entry : sprites.entrySet()) {
       PShape sprite = (PShape)entry.getValue();
@@ -31,12 +32,12 @@ public class ProductComp {
     this.productSprite = sprites.get(this.product);
     
     this.versions = new HashMap<String, String>();
-    versions.put("VAGRANT", "2.2");
-    versions.put("PACKER", "1.3");
-    versions.put("TERRAFORM", "0.12");
-    versions.put("VAULT", "1.0");
-    versions.put("CONSUL", "1.4");
-    versions.put("NOMAD", "0.9");
+    versions.put("VAGRANT", "v2.2");
+    versions.put("PACKER", "v1.3");
+    versions.put("TERRAFORM", "v0.12");
+    versions.put("VAULT", "v1.0");
+    versions.put("CONSUL", "v1.4");
+    versions.put("NOMAD", "v0.9");
     
     this.version = versions.get(this.product);
   }
@@ -54,13 +55,14 @@ public class ProductComp {
     t.write(this.version, 0, ceil(logoSize / 2), 3);
     popMatrix();
     // draw the grid
-    shape(sprites.get("HASHICORP"), width - 200, height - 60, 30, 30);
+    shape(sprites.get("HASHICORP"), width - 137 - 30, height - 52, 25, 25);
+    shape(sprites.get("HASHICONF"), width - 107 - 30, height - 50, 107, 20); 
   }
 
   void makeGrid() {
-    int margin = 20;
+    int margin = 30;
     int offset = 5;
-    int caption = 50;
+    int caption = 30;
     
     Point[] polygon = new Point[]{
       new Point(margin + offset, margin + offset), // top-left
