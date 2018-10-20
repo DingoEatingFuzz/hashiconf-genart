@@ -1,29 +1,25 @@
 # HashiConf 2018 Generative Art
 
-Please don't mind the mess.
+A generative art installation for HashiConf 2018 that generates one-of-a-kind designs based
+on one of the six HashiCorp products and then plots that design using an [AxiDraw plotter]().
 
-## Goal
+## Generating SVGs
 
-Make plotter-safe SVGs that resemble HashiCorp branding but are all one-of-a-kind.
+SVGs are generated using [Processing](https://processing.org/download/). Opening and running
+`hashiconf/hashiconf.pde` will create an svg with a seed of 0. This is useful for testing the
+script.
 
-## Current State
+The Make target `make generate` will generate an svg from the commandline seeded with the current time.
+This requires [the Processing CLI toolset to be installed](https://github.com/processing/processing/wiki/Command-Line).
 
-- [x] Single color logos
-- [x] Constrained lines that can be drawn in arbitrary polygons
-- [x] Constrained circles that can be drawn in arbitrary polygons
-- [x] Functions to generate each product grid in a polygon
-- [x] Some experimental entropy for product grids to add variations to spacing, angles, and radii
-- [x] A composition that is heavy on branding
-- [x] A composition that is heavy on generative Art
-- [x] SVG exporting
-- [ ] Confirm that everything is plotter safe
-- [ ] Accept a seed via commandline args
+## Plotting SVGs
 
-## How to run
+SVGs are plotted using the [AxiDraw v3 CLI toolset](https://axidraw.com/doc/cli_api/#introduction). The
+Make target `make plot` will tell the AxiDraw to plot the latest SVG generated from `make generate` (this
+is done using an expected filename convention).
 
-First, get [Processing](https://processing.org/download/), then run any of the pde files named after the directory they are in.
+:warning: The AxiDraw CLI toolset (AxiCli) is not yet publically available. If you own an AxiDraw and would
+like to run this project, [contact Evil Mad Scientist](https://shop.evilmadscientist.com/contact) to get
+this prerelease software. If you have this software already, drop a copy in the root of this repo and everything
+will work. Refer to the `.gitignore` file if you are unsure what files to put where.
 
-  - circle_math: Some experiments to nail down constrained shapes
-  - logo_spread: An experiement with the product logos
-  - product_grids: Used to get the product grids just right
-  - speaker_processing: The project you actually want
