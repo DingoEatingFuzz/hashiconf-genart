@@ -6,7 +6,7 @@ float duration = 50;
 String[] products = { "VAGRANT", "PACKER", "VAULT", "TERRAFORM", "CONSUL", "NOMAD" };
 
 void setup() {
-  size(500, 800);
+  size(550, 850);
   smooth(2);
   stroke(0);
   strokeWeight(1);
@@ -14,9 +14,11 @@ void setup() {
 
   background(255);
 
-  ProductWheelComp comp1 = new ProductWheelComp();
-  ProductComp comp2 = new ProductComp("VAULT", 35, 0.9);
+  //ProductWheelComp comp1 = new ProductWheelComp();
+  ProductComp comp2 = new ProductComp("VAGRANT", 30, 0.9);
+  beginRecord(SVG, "temp/text.svg");
   comp2.draw();
+  endRecord();
 
   //exportAll();
   //exit();
@@ -38,7 +40,7 @@ void exportAll() {
     endRecord();
   }
   // draw 15 instances of each chart
-  for (int i = 1; i <= 15; i++) {
+  for (int i = 1; i <= 0; i++) {
     for (int productIndex = 0; productIndex < products.length; productIndex++) {
       clear();
       background(255);

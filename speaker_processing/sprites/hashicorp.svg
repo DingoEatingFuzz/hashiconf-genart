@@ -1,93 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 135.36">
-  <title>hashicorp</title>
-  <g>
-    <polygon points="57.54 4.3 7.64 33.09 7.64 33.11 7.64 102.23 26.39 113.05 26.39 43.91 57.54 25.93 57.54 4.3" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <polygon points="77.46 4.3 77.46 59.37 57.54 59.37 57.54 38.82 38.79 49.64 38.79 120.19 57.54 131.03 57.54 76.13 77.46 76.13 77.46 96.54 96.21 85.72 96.21 15.13 77.46 4.3" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <polygon points="77.46 131.06 127.36 102.27 127.36 102.25 127.36 33.13 108.61 22.31 108.61 91.45 77.46 109.43 77.46 131.06" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="115.97" x2="57.54" y2="126.75" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="98.07" x2="26.46" y2="108.89" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="111.02" x2="57.54" y2="121.79" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="93.11" x2="26.39" y2="103.89" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="128.28" x2="79.87" y2="129.67" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="106.06" x2="57.54" y2="116.83" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="88.15" x2="26.46" y2="98.97" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="123.32" x2="84.17" y2="127.18" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="101.1" x2="57.54" y2="111.88" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="83.2" x2="26.46" y2="94.01" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="118.37" x2="88.48" y2="124.7" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="96.14" x2="57.54" y2="106.92" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="78.24" x2="26.46" y2="89.06" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="113.41" x2="92.78" y2="122.22" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="91.19" x2="57.54" y2="101.96" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="73.28" x2="26.41" y2="84.07" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="78.31" y1="108.94" x2="97.09" y2="119.73" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="86.23" x2="57.54" y2="97" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="68.32" x2="26.39" y2="79.1" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="82.61" y1="106.46" x2="101.39" y2="117.25" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="81.27" x2="57.53" y2="92.04" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="63.37" x2="26.39" y2="74.14" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="86.92" y1="103.97" x2="105.7" y2="114.76" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="76.31" x2="57.51" y2="87.07" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="58.41" x2="26.41" y2="69.19" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="91.26" y1="101.51" x2="110" y2="112.28" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="93.58" x2="80.03" y2="95.06" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="71.35" x2="57.54" y2="82.13" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="53.45" x2="26.39" y2="64.22" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="95.52" y1="99" x2="114.31" y2="109.8" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="88.62" x2="84.34" y2="92.57" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="66.4" x2="57.53" y2="77.17" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="48.49" x2="26.41" y2="59.28" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="99.83" y1="96.52" x2="118.61" y2="107.31" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="83.66" x2="88.64" y2="90.09" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="61.44" x2="64.35" y2="76.13" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="43.53" x2="26.39" y2="54.31" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="104.13" y1="94.03" x2="122.92" y2="104.83" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="78.7" x2="92.94" y2="87.6" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="56.48" x2="72.98" y2="76.13" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="38.58" x2="26.41" y2="49.36" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.43" y1="91.55" x2="127.22" y2="102.35" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="38.79" y1="51.52" x2="96.21" y2="84.52" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="7.64" y1="33.62" x2="26.39" y2="44.39" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="86.69" x2="127.36" y2="97.47" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="61.07" y1="59.37" x2="96.21" y2="79.56" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="41.46" y1="48.1" x2="57.51" y2="57.32" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="11.49" y1="30.87" x2="30.28" y2="41.67" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="81.73" x2="127.36" y2="92.51" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="69.7" y1="59.37" x2="96.21" y2="74.6" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="45.77" y1="45.61" x2="57.53" y2="52.38" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="15.8" y1="28.39" x2="34.58" y2="39.18" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="76.78" x2="127.36" y2="87.55" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="58.87" x2="96.21" y2="69.65" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="50.07" y1="43.13" x2="57.53" y2="47.42" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="20.1" y1="25.9" x2="38.88" y2="36.7" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="71.82" x2="127.36" y2="82.59" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="53.91" x2="96.21" y2="64.69" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="54.37" y1="40.64" x2="57.54" y2="42.47" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="24.41" y1="23.42" x2="43.19" y2="34.22" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="66.86" x2="127.36" y2="77.63" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="48.96" x2="96.21" y2="59.73" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="28.71" y1="20.94" x2="47.49" y2="31.73" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="61.9" x2="127.36" y2="72.68" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="44" x2="96.21" y2="54.77" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="33.02" y1="18.45" x2="51.79" y2="29.25" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="56.94" x2="127.36" y2="67.72" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="39.04" x2="96.21" y2="49.81" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="37.32" y1="15.97" x2="56.1" y2="26.76" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="51.99" x2="127.36" y2="62.76" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="34.08" x2="96.21" y2="44.86" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="41.63" y1="13.49" x2="57.54" y2="22.63" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="47.03" x2="127.36" y2="57.8" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="29.12" x2="96.21" y2="39.9" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="45.93" y1="11" x2="57.53" y2="17.67" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="42.07" x2="127.36" y2="52.84" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="24.17" x2="96.21" y2="34.94" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="50.24" y1="8.52" x2="57.53" y2="12.71" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="37.11" x2="127.36" y2="47.89" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="19.21" x2="96.21" y2="29.98" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="54.54" y1="6.04" x2="57.53" y2="7.76" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="32.15" x2="127.36" y2="42.93" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="14.25" x2="96.21" y2="25.03" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="108.61" y1="27.2" x2="127.36" y2="37.97" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-    <line x1="77.46" y1="9.29" x2="96.21" y2="20.07" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-width="0.5"/>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 135 135.4" style="enable-background:new 0 0 135 135.4;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#231F20;stroke-width:0.5;stroke-miterlimit:10;}
+</style>
+<title>hashicorp</title>
+<g>
+	<polygon class="st0" points="57.5,4.3 7.6,33.1 7.6,33.1 7.6,102.2 26.4,113.1 26.4,43.9 57.5,25.9 	"/>
+	<polygon class="st0" points="77.5,4.3 77.5,59.4 57.5,59.4 57.5,38.8 38.8,49.6 38.8,120.2 57.5,131 57.5,76.1 77.5,76.1 
+		77.5,96.5 96.2,85.7 96.2,15.1 	"/>
+	<polygon class="st0" points="77.5,131.1 127.4,102.3 127.4,102.2 127.4,33.1 108.6,22.3 108.6,91.4 77.5,109.4 	"/>
+	<line class="st0" x1="77.5" y1="123.3" x2="84.2" y2="127.2"/>
+	<line class="st0" x1="38.8" y1="101.1" x2="57.5" y2="111.9"/>
+	<line class="st0" x1="7.6" y1="83.2" x2="26.5" y2="94"/>
+	<line class="st0" x1="82.6" y1="106.5" x2="101.4" y2="117.2"/>
+	<line class="st0" x1="38.8" y1="81.3" x2="57.5" y2="92"/>
+	<line class="st0" x1="7.6" y1="63.4" x2="26.4" y2="74.1"/>
+	<line class="st0" x1="99.8" y1="96.5" x2="118.6" y2="107.3"/>
+	<line class="st0" x1="77.5" y1="83.7" x2="88.6" y2="90.1"/>
+	<line class="st0" x1="38.8" y1="61.4" x2="64.3" y2="76.1"/>
+	<line class="st0" x1="7.6" y1="43.5" x2="26.4" y2="54.3"/>
+	<line class="st0" x1="108.6" y1="81.7" x2="127.4" y2="92.5"/>
+	<line class="st0" x1="69.7" y1="59.4" x2="96.2" y2="74.6"/>
+	<line class="st0" x1="45.8" y1="45.6" x2="57.5" y2="52.4"/>
+	<line class="st0" x1="15.8" y1="28.4" x2="34.6" y2="39.2"/>
+	<line class="st0" x1="108.6" y1="61.9" x2="127.4" y2="72.7"/>
+	<line class="st0" x1="77.5" y1="44" x2="96.2" y2="54.8"/>
+	<line class="st0" x1="33" y1="18.5" x2="51.8" y2="29.2"/>
+	<line class="st0" x1="108.6" y1="42.1" x2="127.4" y2="52.8"/>
+	<line class="st0" x1="77.5" y1="24.2" x2="96.2" y2="34.9"/>
+	<line class="st0" x1="50.2" y1="8.5" x2="57.5" y2="12.7"/>
+</g>
 </svg>
