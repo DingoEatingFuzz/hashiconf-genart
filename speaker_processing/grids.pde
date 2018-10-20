@@ -93,8 +93,6 @@ public class ProductGrid {
           px + (cosAng + jAngle) * maxDimension, py - (sinAng + jAngle) * maxDimension,
           polygon
         );
-      } else {
-        println("skipping line");
       }
     }
   }
@@ -117,8 +115,8 @@ public class ProductGrid {
 
     while (y < bbox.yMax + size / 2) {
       while (x < bbox.xMax + tHeight) {
-        float jr = r + map(noise(x, y), 0, 1, -jitter * 1.5, jitter * 0.5);
-        float jr2 = r + map(noise(x + tHeight, y + size / 2), 0, 1, -jitter * 1.5, jitter * 0.5);
+        float jr = r + map(noise(x, y), 0, 1, -jitter, jitter * 0.25);
+        float jr2 = r + map(noise(x + tHeight, y + size / 2), 0, 1, -jitter * 0.2, jitter * 0.3);
         constrainedCircles.circle(x, y, jr, polygon);
         constrainedCircles.circle(x + tHeight, y + size / 2, jr2, polygon);
         x += tHeight * 2;
