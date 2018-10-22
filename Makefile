@@ -1,4 +1,5 @@
-# Used to generate an svg to draw
+WD = $$PWD
+
 generate:
 	processing-java --sketch="$$PWD/hashiconf" --run $$(date +%s);
 
@@ -20,3 +21,10 @@ raise:
 # is in the raised state
 lower:
 	python utils.py lower-pen;
+
+bootstrap:
+	@mkdir bin;
+	@cd bin \
+	  && echo "cd ${CURDIR} && make generate && make plot" > hashi-plot \
+	  && chmod +x hashi-plot
+	@echo "Now run export PATH=\$$PWD/bin:\$$PATH";

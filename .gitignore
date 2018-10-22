@@ -4,3 +4,6 @@ prototype/samples
 prototype/controls
 hashiconf/archive/
 hashiconf/latest.svg
+terraform/env/us-west/.terraform
+*.tfstate
+*.tfstate.backup

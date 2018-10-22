@@ -1,0 +1,33 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "us-west-2",
+    "source_ami": "ami-01e0cf6e025c036e4",
+    "instance_type": "t2.medium",
+    "ssh_username": "ubuntu",
+    "ami_name": "hashistack {{timestamp}}",
+    "ami_groups": ["all"]
+  }],
+  "provisioners":  [
+  {
+    "type": "shell",
+    "inline": [
+      "sudo mkdir /ops",
+      "sudo chmod 777 /ops"
+    ]
+  },
+  {
+    "type": "file",
+    "source": "config",
+    "destination": "/ops"
+  },
+  {
+    "type": "file",
+    "source": "scripts",
+    "destination": "/ops"
+  },
+  {
+    "type": "shell",
+    "script": "scripts/setup.sh"
+  }]
+}
