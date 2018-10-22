@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      html, body { padding: 0; margin: 0; background: #000; }
+      .preview {
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+      }
+      .preview svg {
+        height: 100% !important;
+        margin: auto;
+      }
+      .preview svg * {
+        vector-effect: non-scaling-stroke;
+        fill: transparent;
+        stroke: #a98a2e;
+        stroke-width: 2 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preview">
+      Finding the image...
+    </div>
+    <script>
+      var es = new EventSource("/watch");
+      es.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        console.log(data);
+        if (data.svg) {
+          document.querySelector('.preview').innerHTML = data.svg;
+          const svg = document.querySelector('.preview svg');
+          const w = svg.getAttribute('width');
+          const h = svg.getAttribute('height');
+          svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+          svg.removeAttribute('width');
+          svg.removeAttribute('height');
+        }
+      };
+    </script>
+  </body>
+</html>
