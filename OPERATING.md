@@ -1,4 +1,4 @@
-## How to Operate the HashiConf Generative Art Installation
+# How to Operate the HashiConf Generative Art Installation
 
 ## 1. Standard Operating Procedure
 
