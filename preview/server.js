@@ -43,3 +43,5 @@ const next = err => {
 const watchDir = path.join(__dirname, '..')
 console.log(`Watching ${watchDir}`)
 const stalker = watchr.open(watchDir, listener, next)
+
+const interval = setInterval(() => broadcast({ heartbeat: Date.now() }), 5000);
